@@ -23,7 +23,7 @@ body {
     height: 50%;
     width: 50%;
     margin: auto;
-    margin-top: 80px;
+    margin-top: 50px;
 }
 .painel-header{
     text-align: center;
@@ -44,6 +44,8 @@ body {
 
 input {
     width: 100%;
+    font-size: 20px;
+    padding: 5px;
 }
 
 input:focus {
