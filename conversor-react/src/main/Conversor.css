@@ -1,0 +1,13 @@
+.conversor {
+    height: 500px;
+    width:  500px;
+    border-radius: 5px;
+    overflow: hidden;
+
+    color: white;
+    background-color: #60cf82;
+    
+
+    
+    padding: 0px;
+}

@@ -7,21 +7,53 @@ const hex = inputs[3];
 inputs.forEach((input) => {
   input.addEventListener("keyup", (evt) => {
     if (dec === evt.currentTarget) {
+      var theEvent = evt || window.event;
+      var key = theEvent.keyCode;
+      key = String.fromCharCode(key);
+      var regex = /^[0-9]+$/;
+      if (!regex.test(key)) {
+        theEvent.preventDefault();
+      }
+
       let numero = input.value;
       bin.value = DecToBin(numero);
       oct.value = DecToOct(numero);
       hex.value = DecToHex(numero);
     } else if (bin === evt.currentTarget) {
+      var theEvent = evt || window.event;
+      var key = theEvent.keyCode;
+      key = String.fromCharCode(key);
+      var regex = /[0-1]/;
+      if (!regex.test(key)) {
+        theEvent.preventDefault();
+      }
+
       let numero = input.value;
       dec.value = BinToDec(numero);
       oct.value = BinToOct(numero);
       hex.value = BinToHex(numero);
     } else if (oct === evt.currentTarget) {
+      var theEvent = evt || window.event;
+      var key = theEvent.keyCode;
+      key = String.fromCharCode(key);
+      var regex = /^[0-8]+$/;
+      if (!regex.test(key)) {
+        theEvent.preventDefault();
+      }
+
       let numero = input.value;
       dec.value = OctToDec(numero);
       bin.value = OctToBin(numero);
       hex.value = OctToHex(numero);
     } else if (hex === evt.currentTarget) {
+      var theEvent = evt || window.event;
+      var key = theEvent.keyCode;
+      key = String.fromCharCode(key);
+      var regex = /^[0-9 a-f]+$/;
+      if (!regex.test(key)) {
+        theEvent.preventDefault();
+      }
+
       let numero = input.value;
       dec.value = HexToDec(numero);
       bin.value = HexToBin(numero);
@@ -149,49 +181,4 @@ function HexToOct(numero) {
   let num = HexToDec(numero);
   let Oct = num.toString(8);
   return Oct;
-}
-
-function onlynumberBin(evt) {
-  var theEvent = evt || window.event;
-  var key = theEvent.keyCode || theEvent.which;
-  key = String.fromCharCode(key);
-  //var regex = /^[0-9.,]+$/;
-  var regex = /^[0-1.]+$/;
-  if (!regex.test(key)) {
-    theEvent.returnValue = false;
-    if (theEvent.preventDefault) theEvent.preventDefault();
-  }
-}
-function onlynumberDec(evt) {
-  var theEvent = evt || window.event;
-  var key = theEvent.keyCode || theEvent.which;
-  key = String.fromCharCode(key);
-  //var regex = /^[0-9.,]+$/;
-  var regex = /^[0-9.,]+$/;
-  if (!regex.test(key)) {
-    theEvent.returnValue = false;
-    if (theEvent.preventDefault) theEvent.preventDefault();
-  }
-}
-function onlynumberOct(evt) {
-  var theEvent = evt || window.event;
-  var key = theEvent.keyCode || theEvent.which;
-  key = String.fromCharCode(key);
-  //var regex = /^[0-9.,]+$/;
-  var regex = /^[0-8.]+$/;
-  if (!regex.test(key)) {
-    theEvent.returnValue = false;
-    if (theEvent.preventDefault) theEvent.preventDefault();
-  }
-}
-function onlynumberHex(evt) {
-  var theEvent = evt || window.event;
-  var key = theEvent.keyCode || theEvent.which;
-  key = String.fromCharCode(key);
-  //var regex = /^[0-9.,]+$/;
-  var regex = /^[0-9. a-f]+$/;
-  if (!regex.test(key)) {
-    theEvent.returnValue = false;
-    if (theEvent.preventDefault) theEvent.preventDefault();
-  }
 }
